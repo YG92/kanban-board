@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css'
+
+html
+  height: 100%
+
+body
+  margin: 0
+  font-family: 'Roboto'
+  height: 100%
+  @extend .col
+
+.row__space-between
+  display: flex
+  justify-content: space-between
+
+.col
+  display: flex
+  flex-direction: column
+
+.col__center
+  @extend .col
+  align-items: center
+
+.stretch
+  @extend .col
+  flex: 1 1 auto
+
+app-root
+  @extend .stretch

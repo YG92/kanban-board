@@ -1,0 +1,33 @@
+header
+  display: flex
+  justify-content: space-between
+  padding: 0 1rem
+  align-items: center
+  background-color: #449acc
+  color: white
+
+button
+  color: #000
+
+.boards_wrapper
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin: 1rem
+
+@media(min-width: 600px)
+  .boards_wrapper
+    width: 570px
+    flex-direction: row
+    flex-wrap: wrap
+
+@media(min-width: 900px)
+  .boards_wrapper
+    width: 840px
+
+@media(min-width: 1150px)
+  .boards_wrapper
+    width: 1120px
+
+.page_wrapper
+  flex: 1 1 auto
