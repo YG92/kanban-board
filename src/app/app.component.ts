@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {BoardModel} from './board/board.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  boards = [1, 2, 3, 4];
+  boards = [];
+  editMode = false;
+
+
+  addBoard() {
+    this.editMode = true;
+    console.log(this.boards);
+  }
 }
+

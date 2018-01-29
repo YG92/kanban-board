@@ -11,6 +11,12 @@
   <main class="col__center stretch">
     <div class="boards_wrapper">
       <app-board *ngFor="let board of boards"></app-board>
+      <app-board *ngIf="!editMode; else edit" (click)="addBoard()">
+        Add new board...
+      </app-board>
+      <ng-template #edit>
+        <app-board-form></app-board-form>
+      </ng-template>
     </div>
   </main>
 </div>
