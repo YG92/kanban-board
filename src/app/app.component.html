@@ -10,12 +10,15 @@
   </header>
   <main class="col__center stretch">
     <div class="boards_wrapper">
-      <app-board *ngFor="let board of boards"></app-board>
-      <app-board *ngIf="!editMode; else edit" (click)="addBoard()">
+      <mat-card *ngFor="let board of boards">
+        <div>{{board.title}}</div>
+        <div>{{board.list}}</div>
+      </mat-card>
+      <mat-card *ngIf="!editMode; else edit" (click)="switchMode()">
         Add new board...
-      </app-board>
+      </mat-card>
       <ng-template #edit>
-        <app-board-form></app-board-form>
+        <app-board-form (submitted)="switchMode()"></app-board-form>
       </ng-template>
     </div>
   </main>

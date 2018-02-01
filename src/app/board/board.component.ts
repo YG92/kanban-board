@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {BoardModel} from './board.model';
 
 @Component({
   selector: 'app-board',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./board.component.sass']
 })
 export class BoardComponent implements OnInit {
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit() {}
+  @Input() board: BoardModel;
+
+  ngOnInit() {
+  }
 }

@@ -9,6 +9,8 @@ import {MatButtonModule, MatCardModule} from '@angular/material';
 import {BoardFormComponent} from './board/board-form/board-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ReactiveErrors} from '@angular/forms/src/directives/reactive_errors';
+import {BoardListService} from './board/board-list.service';
+
 
 @NgModule({
   declarations: [AppComponent, BoardComponent, BoardFormComponent],
@@ -18,7 +20,7 @@ import {ReactiveErrors} from '@angular/forms/src/directives/reactive_errors';
     MatCardModule,
     MatButtonModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [],
+  providers: [BoardListService],
 
   bootstrap: [AppComponent]
 })

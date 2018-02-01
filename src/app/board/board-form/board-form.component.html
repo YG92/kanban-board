@@ -1,5 +1,5 @@
 <mat-card>
-  <form onSubmit="onSubmit" class="col">
+  <form (ngSubmit)="onSubmit()" class="col">
     <input [formControl]="title" placeholder="type board title">
     <button mat-raised-button>submit</button>
   </form>

@@ -1,4 +1,4 @@
 export class BoardModel {
-  constructor(name: string) {
+  constructor(public title: string, public list: Array<any>) {
   }
 }
