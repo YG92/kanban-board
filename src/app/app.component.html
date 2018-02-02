@@ -1,24 +1,21 @@
 <div class="page_wrapper stretch">
-  <header color="primary">
-    <h2>Kanban Board</h2>
-    <div class="button_wrapper">
-      <button mat-raised-button color="primary">
-        button
-      </button>
-
-    </div>
-  </header>
+  <mat-toolbar color="primary">
+    <span>Kanban Board</span>
+  </mat-toolbar>
   <main class="col__center stretch">
     <div class="boards_wrapper">
-      <mat-card *ngFor="let board of boards">
-        <div>{{board.title}}</div>
-        <div>{{board.list}}</div>
+      <mat-card class="big_card" *ngFor="let board of boards">
+        <mat-card-title>{{board.title}}</mat-card-title>
+        <mat-card class="little_card" *ngFor="let item of board.list">{{item}}
+        </mat-card>
       </mat-card>
-      <mat-card *ngIf="!editMode; else edit" (click)="switchMode()">
+      <mat-card *ngIf="!editMode; else edit" (click)="switchMode()" [ngStyle]="{height: '15px'}">
         Add new board...
       </mat-card>
       <ng-template #edit>
-        <app-board-form (submitted)="switchMode()"></app-board-form>
+        <mat-card>
+          <app-board-form (submitted)="switchMode()"></app-board-form>
+        </mat-card>
       </ng-template>
     </div>
   </main>

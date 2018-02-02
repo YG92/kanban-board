@@ -1,6 +1,12 @@
-<mat-card>
-  <form (ngSubmit)="onSubmit()" class="col">
-    <input [formControl]="title" placeholder="type board title">
-    <button mat-raised-button>submit</button>
-  </form>
-</mat-card>
+<form (ngSubmit)="onSubmit()" class="col">
+  <mat-form-field>
+    <input matInput [formControl]="title" placeholder="type board title">
+  </mat-form-field>
+  <button mat-raised-button disabled type="submit"
+          *ngIf="title.invalid; else valid">submit
+  </button>
+  <ng-template #valid>
+    <button mat-raised-button color="primary" type="submit">submit</button>
+  </ng-template>
+</form>
+

@@ -1,33 +1,9 @@
-header
-  display: flex
-  justify-content: space-between
-  padding: 0 1rem
-  align-items: center
-  background-color: #449acc
-  color: white
-
-button
-  color: #000
-
 .boards_wrapper
+  margin-top: 1rem
+  margin-left: 1rem
   display: flex
-  flex-direction: column
-  align-items: center
-  margin: 1rem
-
-@media(min-width: 600px)
-  .boards_wrapper
-    width: 570px
-    flex-direction: row
-    flex-wrap: wrap
-
-@media(min-width: 900px)
-  .boards_wrapper
-    width: 840px
-
-@media(min-width: 1150px)
-  .boards_wrapper
-    width: 1120px
+  flex-direction: row
+  flex-wrap: wrap
 
 .page_wrapper
   flex: 1 1 auto
@@ -35,3 +11,15 @@ button
 
 mat-card
   margin-bottom: 10px
+  margin-right: 10px
+
+.little_card
+  width: 222px
+  padding: 5px
+
+main
+  background-color: lighten(#3f51b5, 30%)
+
+.big_card
+  background-color: lighten(#e2e4e6, 5%)
+
