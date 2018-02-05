@@ -1,0 +1,7 @@
+<mat-card class="big_card">
+  <mat-card-title>{{board.title}}</mat-card-title>
+  <mat-card class="little_card"
+            *ngFor="let item of board.list">{{item}}
+  </mat-card>
+  <app-card-form [boardList]="board.list"></app-card-form>
+</mat-card>

@@ -1,3 +1,3 @@
 export class BoardModel {
-  constructor(public title: string, public list: Array<any>) {}
+  constructor(public title: string, public list: Array<string>) {}
 }

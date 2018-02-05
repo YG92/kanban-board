@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
 
   switchMode() {
     this.editMode = !this.editMode;
-    console.log(this.editMode);
   }
 
   ngOnInit() {
