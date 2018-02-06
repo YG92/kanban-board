@@ -1,6 +1,6 @@
 <form (ngSubmit)="onSubmit()" class="col">
   <mat-form-field>
-    <input matInput [formControl]="title" placeholder="type board title">
+    <input matInput [formControl]="title" placeholder="type list title">
   </mat-form-field>
   <button mat-raised-button disabled
           *ngIf="title.invalid; else valid">submit
@@ -9,4 +9,3 @@
     <button mat-raised-button color="primary" type="submit">submit</button>
   </ng-template>
 </form>
-

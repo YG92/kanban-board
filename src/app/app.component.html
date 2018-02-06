@@ -3,15 +3,15 @@
     <span>Kanban Board</span>
   </mat-toolbar>
   <main class="col__center stretch">
-    <div class="boards_wrapper">
-      <app-board *ngFor="let board of boards" [board]="board"></app-board>
+    <div class="list_wrapper">
+      <app-list *ngFor="let listItem of list; let index = index" [listItem]="listItem"></app-list>
       <mat-card *ngIf="!editMode; else edit" (click)="switchMode()"
                 [ngStyle]="{height: '15px'}">
-        Add new board...
+        Add new list...
       </mat-card>
       <ng-template #edit>
         <mat-card>
-          <app-board-form (submitted)="switchMode()"></app-board-form>
+          <app-list-form (submitted)="switchMode()"></app-list-form>
         </mat-card>
       </ng-template>
     </div>

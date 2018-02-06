@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -10,15 +9,14 @@ import {
   MatInputModule,
   MatToolbarModule
 } from '@angular/material';
-import {BoardFormComponent} from './board/board-form/board-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ReactiveErrors} from '@angular/forms/src/directives/reactive_errors';
-import {BoardListService} from './board/board-list.service';
+import {ListService} from './list/list.service';
 import {CardFormComponent} from './card/card-form/card-form.component';
-import { BoardComponent } from './board/board.component';
+import {ListComponent} from './list/list.component';
+import {ListFormComponent} from './list/list-form/list-form.component';
 
 @NgModule({
-  declarations: [AppComponent, BoardFormComponent, CardFormComponent, BoardComponent],
+  declarations: [AppComponent, CardFormComponent, ListComponent, ListFormComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -28,7 +26,7 @@ import { BoardComponent } from './board/board.component';
     MatButtonModule,
     ReactiveFormsModule, FormsModule
   ],
-  providers: [BoardListService],
+  providers: [ListService],
 
   bootstrap: [AppComponent]
 })

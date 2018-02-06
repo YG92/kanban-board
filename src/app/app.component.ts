@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardModel } from './board/board.model';
-import { BoardListService } from './board/board-list.service';
+import { ListService } from './list/list.service';
 import { Subscription } from 'rxjs/Subscription';
+import {ListModel} from './list/list.model';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +9,10 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
-  constructor(private boardSrv: BoardListService) {}
+  constructor(private listSrv: ListService) {}
 
   editMode = false;
-  boards: BoardModel[];
+  list: ListModel[]
   subscription = new Subscription();
 
   switchMode() {
@@ -20,9 +20,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.boards = this.boardSrv.getBoards();
-    this.subscription = this.boardSrv.boardAdded.subscribe(boards => {
-      this.boards = boards;
+    this.list = this.listSrv.getList();
+    this.subscription = this.listSrv.listAdded.subscribe(list => {
+      this.list = list;
     });
   }
 }

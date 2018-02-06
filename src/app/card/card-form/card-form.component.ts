@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {BoardListService} from '../../board/board-list.service';
+import {ListService} from '../../list/list.service';
 
 @Component({
   selector: 'app-card-form',
@@ -9,16 +9,13 @@ import {BoardListService} from '../../board/board-list.service';
 })
 export class CardFormComponent implements OnInit {
 
-  constructor(private boardSrv: BoardListService) {
+  constructor(private listSrv: ListService) {
   }
 
   title = new FormControl('', [Validators.required]);
-  @Output() submitted = new EventEmitter<boolean>();
-  @Input() boardList: Array<string>;
 
   onSubmit() {
-    this.boardSrv.newCard(this.title.value, this.boardList);
-    this.submitted.emit(true);
+    this.listSrv.newCard(this.title.value);
   }
 
   ngOnInit() {
