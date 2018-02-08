@@ -7,7 +7,7 @@ export class ListService {
   constructor() {
   }
 
-  list: ListModel[] = [
+  listStore: ListModel[] = [
     new ListModel('title', ['gdgd', 'dfsdfsa']),
     new ListModel('title', ['gdgd', 'dfsdfsa']),
     new ListModel('title', ['gdgd', 'dfsdfsa']),
@@ -16,17 +16,17 @@ export class ListService {
   listAdded = new Subject<ListModel[]>();
   editedList: ListModel;
 
-  getList() {
-    return this.list.slice();
+  getListStore() {
+    return this.listStore.slice();
   }
 
-  newList(title) {
-    this.list.push(new ListModel(title, []));
-    this.listAdded.next(this.list.slice());
+  addNewList(title) {
+    this.listStore.push(new ListModel(title, []));
+    this.listAdded.next(this.listStore.slice());
   }
 
-  newCard(title) {
+  addNewCard(title) {
     this.editedList.cards.push(title);
-    this.listAdded.next(this.list.slice());
+    this.listAdded.next(this.listStore.slice());
   }
 }

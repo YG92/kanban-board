@@ -5,7 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatIconModule,
   MatInputModule,
   MatToolbarModule
 } from '@angular/material';
@@ -14,20 +14,20 @@ import {ListService} from './list/list.service';
 import {CardFormComponent} from './card/card-form/card-form.component';
 import {ListComponent} from './list/list.component';
 import {ListFormComponent} from './list/list-form/list-form.component';
+import {ClickOutsideDirective} from './click-outside.directive';
 
 @NgModule({
-  declarations: [AppComponent, CardFormComponent, ListComponent, ListFormComponent],
+  declarations: [AppComponent, CardFormComponent, ListComponent, ListFormComponent, ClickOutsideDirective],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatToolbarModule,
     MatInputModule,
-    MatButtonModule,
+    MatButtonModule, MatIconModule,
     ReactiveFormsModule, FormsModule
   ],
   providers: [ListService],
-
   bootstrap: [AppComponent]
 })
 export class AppModule {

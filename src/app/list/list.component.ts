@@ -9,15 +9,15 @@ import {ListService} from './list.service';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private listSrv: ListService) {
+  constructor(public listSrv: ListService) {
   }
 
   cardEditMode = false;
-  @Input() listItem: ListModel;
+  @Input() list: ListModel;
 
   onAddCard() {
-    this.listSrv.editedList = this.listItem;
     this.cardEditMode = true;
+    this.listSrv.editedList = this.list;
   }
 
   ngOnInit() {

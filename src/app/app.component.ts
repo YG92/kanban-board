@@ -6,13 +6,13 @@ import {ListModel} from './list/list.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.sass'],
 })
 export class AppComponent implements OnInit {
   constructor(private listSrv: ListService) {}
 
   editMode = false;
-  list: ListModel[]
+  listStore: ListModel[]
   subscription = new Subscription();
 
   switchMode() {
@@ -20,9 +20,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.list = this.listSrv.getList();
-    this.subscription = this.listSrv.listAdded.subscribe(list => {
-      this.list = list;
+    this.listStore = this.listSrv.getListStore();
+    this.subscription = this.listSrv.listAdded.subscribe(listStore => {
+      this.listStore = listStore;
     });
   }
 }

@@ -1,12 +1,7 @@
 <mat-card class="big_card">
-  <mat-card-title>{{listItem.title}}</mat-card-title>
+  <mat-card-title>{{list.title}}</mat-card-title>
   <mat-card class="little_card"
-            *ngFor="let card of listItem.cards">{{card}}
+            *ngFor="let card of list.cards">{{card}}
   </mat-card>
-  <mat-card-subtitle *ngIf="!cardEditMode; else edit"
-                     (click)="onAddCard()">Add new card...
-  </mat-card-subtitle>
-  <ng-template #edit>
-    <app-card-form></app-card-form>
-  </ng-template>
+  <app-card-form (click)="onAddCard()"></app-card-form>
 </mat-card>

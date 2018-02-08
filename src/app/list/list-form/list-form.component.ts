@@ -9,12 +9,15 @@ import {ListService} from '../list.service';
 })
 export class ListFormComponent implements OnInit {
 
-  constructor(private listSrv: ListService) { }
+  constructor(private listSrv: ListService) {
+  }
+
   title = new FormControl('', [Validators.required]);
   @Output() submitted = new EventEmitter<boolean>();
+  @Output() toggleForm = new EventEmitter();
 
   onSubmit() {
-    this.listSrv.newList(this.title.value);
+    this.listSrv.addNewList(this.title.value);
     this.submitted.emit(true);
   }
 
