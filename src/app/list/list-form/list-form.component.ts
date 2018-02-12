@@ -12,13 +12,8 @@ export class ListFormComponent implements OnInit {
   constructor(private listSrv: ListService) {
   }
 
-  title = new FormControl('', [Validators.required]);
-  @Output() submitted = new EventEmitter<boolean>();
-  @Output() toggleForm = new EventEmitter();
-
-  onSubmit() {
-    this.listSrv.addNewList(this.title.value);
-    this.submitted.emit(true);
+  addList(title: string) {
+    this.listSrv.addNewList(title);
   }
 
   ngOnInit() {

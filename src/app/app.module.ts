@@ -15,17 +15,22 @@ import {CardFormComponent} from './card/card-form/card-form.component';
 import {ListComponent} from './list/list.component';
 import {ListFormComponent} from './list/list-form/list-form.component';
 import {ClickOutsideDirective} from './click-outside.directive';
+import {FormComponent} from './form/form.component';
+import {DragDropDirectiveModule} from 'angular4-drag-drop';
 
 @NgModule({
-  declarations: [AppComponent, CardFormComponent, ListComponent, ListFormComponent, ClickOutsideDirective],
+  declarations: [AppComponent, CardFormComponent, ListComponent, ListFormComponent, ClickOutsideDirective, FormComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatToolbarModule,
     MatInputModule,
-    MatButtonModule, MatIconModule,
-    ReactiveFormsModule, FormsModule
+    MatButtonModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    FormsModule,
+    DragDropDirectiveModule
   ],
   providers: [ListService],
   bootstrap: [AppComponent]

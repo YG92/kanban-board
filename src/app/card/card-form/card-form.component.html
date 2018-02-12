@@ -1,17 +1,2 @@
-<form (ngSubmit)="onSubmit()" class="col" (appClickOutside)="clickedOutside()">
-  <mat-form-field (click)="editMode = true">
-    <input matInput [formControl]="title" placeholder="Add new card...">
-    <button mat-button *ngIf="title.value" matSuffix mat-icon-button
-            aria-label="Clear" (click)="reset()">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-  <div *ngIf="editMode">
-    <button mat-raised-button disabled
-            *ngIf="title.invalid; else valid">submit
-    </button>
-    <ng-template #valid>
-      <button mat-raised-button color="primary" type="submit">submit</button>
-    </ng-template>
-  </div>
-</form>
+<app-form placeholderText="Add new card..."
+          (submitted)="addCard($event)"></app-form>

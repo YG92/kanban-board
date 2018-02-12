@@ -1,7 +1,14 @@
-<mat-card class="big_card">
-  <mat-card-title>{{list.title}}</mat-card-title>
+<mat-card class="big_card" dropDirective
+          (dropEvent)="addDropItem()">
+  <mat-card-title>{{list.title | uppercase}}
+  </mat-card-title>
   <mat-card class="little_card"
-            *ngFor="let card of list.cards">{{card}}
+            *ngFor="let card of list.cards; let id = index"
+            [dragDirective]="card"
+            (startDrag)="startDrag(card, id)"
+            >
+    {{card}}
   </mat-card>
-  <app-card-form (click)="onAddCard()"></app-card-form>
+  <app-card-form
+    (click)="onAddCard()"></app-card-form>
 </mat-card>

@@ -1,5 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
 import {ListService} from '../../list/list.service';
 
 @Component({
@@ -11,21 +10,8 @@ export class CardFormComponent implements OnInit {
   constructor(private listSrv: ListService) {
   }
 
-  title = new FormControl('', [Validators.required]);
-  editMode = false;
-
-  onSubmit() {
-    this.listSrv.addNewCard(this.title.value);
-    this.reset();
-  }
-
-  clickedOutside() {
-    this.editMode = false;
-    this.reset();
-  }
-
-  reset() {
-    this.title.reset();
+  addCard(title: string) {
+    this.listSrv.addNewCard(title);
   }
 
   ngOnInit() {

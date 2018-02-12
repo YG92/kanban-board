@@ -12,12 +12,20 @@ export class ListComponent implements OnInit {
   constructor(public listSrv: ListService) {
   }
 
-  cardEditMode = false;
   @Input() list: ListModel;
 
   onAddCard() {
-    this.cardEditMode = true;
     this.listSrv.editedList = this.list;
+  }
+
+  startDrag(card, id) {
+    this.listSrv.draggedItem = card;
+    // this.listSrv.removeCard(this.list, id);
+  }
+
+  addDropItem() {
+    this.onAddCard();
+    this.listSrv.addNewCard(this.listSrv.draggedItem);
   }
 
   ngOnInit() {

@@ -4,16 +4,11 @@
   </mat-toolbar>
   <main class="col__center stretch">
     <div class="list_wrapper">
-      <app-list *ngFor="let list of listStore; let index = index" [list]="list"></app-list>
-      <mat-card *ngIf="!editMode; else edit" (click)="switchMode()"
-                [ngStyle]="{height: '15px'}">
-        Add new list...
+      <app-list *ngFor="let list of listStore; let index = index"
+                [list]="list"></app-list>
+      <mat-card>
+        <app-list-form (submitted)="switchMode()"></app-list-form>
       </mat-card>
-      <ng-template #edit>
-        <mat-card>
-          <app-list-form (submitted)="switchMode()"></app-list-form>
-        </mat-card>
-      </ng-template>
     </div>
   </main>
 </div>

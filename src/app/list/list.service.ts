@@ -8,25 +8,31 @@ export class ListService {
   }
 
   listStore: ListModel[] = [
-    new ListModel('title', ['gdgd', 'dfsdfsa']),
-    new ListModel('title', ['gdgd', 'dfsdfsa']),
-    new ListModel('title', ['gdgd', 'dfsdfsa']),
-    new ListModel('title', ['gdgd', 'dfsdfsa'])
+    new ListModel('title1', ['gdgd', 'dfsdfsa']),
+    new ListModel('title2', ['gdgd', 'dfsdfsa']),
+    new ListModel('title3', ['gdgd', 'dfsdfsa']),
+    new ListModel('title4', ['gdgd', 'dfsdfsa'])
   ];
   listAdded = new Subject<ListModel[]>();
   editedList: ListModel;
+  draggedItem: string;
 
   getListStore() {
     return this.listStore.slice();
   }
 
-  addNewList(title) {
-    this.listStore.push(new ListModel(title, []));
+  addNewList(list) {
+    this.listStore.push(new ListModel(list, []));
     this.listAdded.next(this.listStore.slice());
   }
 
-  addNewCard(title) {
-    this.editedList.cards.push(title);
+  addNewCard(card) {
+    this.editedList.cards.push(card);
+    this.listAdded.next(this.listStore.slice());
+  }
+
+  removeCard(list, id) {
+    list.cards.splice(id, 1);
     this.listAdded.next(this.listStore.slice());
   }
 }
