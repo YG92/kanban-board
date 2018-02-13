@@ -16,6 +16,8 @@ export class ListService {
   listAdded = new Subject<ListModel[]>();
   editedList: ListModel;
   draggedItem: string;
+  draggedListId: number;
+  draggedCardId: number;
 
   getListStore() {
     return this.listStore.slice();
@@ -31,8 +33,7 @@ export class ListService {
     this.listAdded.next(this.listStore.slice());
   }
 
-  removeCard(list, id) {
-    list.cards.splice(id, 1);
-    this.listAdded.next(this.listStore.slice());
+  deleteCard() {
+    this.listStore[this.draggedListId].cards.splice(this.draggedCardId, 1);
   }
 }

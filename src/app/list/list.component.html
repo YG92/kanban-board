@@ -3,9 +3,9 @@
   <mat-card-title>{{list.title | uppercase}}
   </mat-card-title>
   <mat-card class="little_card"
-            *ngFor="let card of list.cards; let id = index"
+            *ngFor="let card of list.cards; let cardId = index"
             [dragDirective]="card"
-            (startDrag)="startDrag(card, id)"
+            (startDrag)="startDrag(card, cardId)"
             >
     {{card}}
   </mat-card>
