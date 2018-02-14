@@ -14,10 +14,9 @@ export class ListService {
     new ListModel('title4', ['gdgd', 'dfsdfsa'])
   ];
   listAdded = new Subject<ListModel[]>();
-  editedList: ListModel;
+  editedListId: number;
   draggedItem: string;
-  draggedListId: number;
-  draggedCardId: number;
+
 
   getListStore() {
     return this.listStore.slice();
@@ -29,11 +28,8 @@ export class ListService {
   }
 
   addNewCard(card) {
-    this.editedList.cards.push(card);
+    this.listStore[this.editedListId].cards.push(card);
     this.listAdded.next(this.listStore.slice());
   }
 
-  deleteCard() {
-    this.listStore[this.draggedListId].cards.splice(this.draggedCardId, 1);
-  }
 }

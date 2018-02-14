@@ -1,6 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit
+} from '@angular/core';
 import {ListModel} from './list.model';
 import {ListService} from './list.service';
+import {DragDropService} from './drag-drop.service';
 
 @Component({
   selector: 'app-list',
@@ -9,28 +14,22 @@ import {ListService} from './list.service';
 })
 export class ListComponent implements OnInit {
 
-  constructor(public listSrv: ListService) {
+  constructor(private listSrv: ListService,
+              private dragDrop: DragDropService) {
   }
 
   @Input() list: ListModel;
   @Input() listId: number;
-  cardId: number;
-
-  onAddCard() {
-    this.listSrv.editedList = this.list;
-  }
 
   startDrag(card, cardId) {
-    this.listSrv.draggedItem = card;
-    this.listSrv.draggedListId = this.listId;
-    this.listSrv.draggedCardId = cardId;
-    this.cardId = cardId;
+    this.dragDrop.draggedItem = card;
+    this.dragDrop.draggedListId = this.listId;
+    this.dragDrop.draggedCardId = cardId;
   }
 
   addDropItem() {
-    this.onAddCard();
-    this.listSrv.addNewCard(this.listSrv.draggedItem);
-    this.listSrv.deleteCard();
+    this.dragDrop.dropCard(this.listId);
+    this.dragDrop.deleteCard();
   }
 
   ngOnInit() {

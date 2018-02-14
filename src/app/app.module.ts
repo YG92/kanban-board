@@ -17,6 +17,7 @@ import {ListFormComponent} from './list/list-form/list-form.component';
 import {ClickOutsideDirective} from './click-outside.directive';
 import {FormComponent} from './form/form.component';
 import {DragDropDirectiveModule} from 'angular4-drag-drop';
+import {DragDropService} from './list/drag-drop.service';
 
 @NgModule({
   declarations: [AppComponent, CardFormComponent, ListComponent, ListFormComponent, ClickOutsideDirective, FormComponent],
@@ -32,7 +33,7 @@ import {DragDropDirectiveModule} from 'angular4-drag-drop';
     FormsModule,
     DragDropDirectiveModule
   ],
-  providers: [ListService],
+  providers: [ListService, DragDropService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
