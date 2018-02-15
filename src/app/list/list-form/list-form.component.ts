@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {ListService} from '../list.service';
+import {ListService} from '../services/list.service';
 
 @Component({
   selector: 'app-list-form',

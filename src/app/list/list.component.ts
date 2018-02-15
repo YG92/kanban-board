@@ -4,8 +4,8 @@ import {
   OnInit
 } from '@angular/core';
 import {ListModel} from './list.model';
-import {ListService} from './list.service';
-import {DragDropService} from './drag-drop.service';
+import {ListService} from './services/list.service';
+import {DragDropService} from './services/drag-drop.service';
 
 @Component({
   selector: 'app-list',
@@ -30,6 +30,10 @@ export class ListComponent implements OnInit {
   addDropItem() {
     this.dragDrop.dropCard(this.listId);
     this.dragDrop.deleteCard();
+  }
+
+  onAddCard() {
+    this.listSrv.editedListId = this.listId;
   }
 
   ngOnInit() {

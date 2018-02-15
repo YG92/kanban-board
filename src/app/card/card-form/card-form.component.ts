@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ListService} from '../../list/list.service';
+import {ListService} from '../../list/services/list.service';
 
 @Component({
   selector: 'app-card-form',

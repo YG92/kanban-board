@@ -1,11 +1,7 @@
-import {Injectable} from '@angular/core';
-import {ListModel} from '../list/list.model';
+import {ListModel} from '../list.model';
 import {Subject} from 'rxjs/Subject';
 
-@Injectable()
 export class ListService {
-  constructor() {
-  }
 
   listStore: ListModel[] = [
     new ListModel('title1', ['gdgd', 'dfsdfsa']),
@@ -13,10 +9,8 @@ export class ListService {
     new ListModel('title3', ['gdgd', 'dfsdfsa']),
     new ListModel('title4', ['gdgd', 'dfsdfsa'])
   ];
-  listAdded = new Subject<ListModel[]>();
+  listChanged = new Subject<ListModel[]>();
   editedListId: number;
-  draggedItem: string;
-
 
   getListStore() {
     return this.listStore.slice();
@@ -24,12 +18,13 @@ export class ListService {
 
   addNewList(list) {
     this.listStore.push(new ListModel(list, []));
-    this.listAdded.next(this.listStore.slice());
+    this.listChanged.next(this.listStore.slice());
   }
 
   addNewCard(card) {
-    this.listStore[this.editedListId].cards.push(card);
-    this.listAdded.next(this.listStore.slice());
+    const editedList = this.listStore[this.editedListId];
+    editedList.cards.push(card);
+    this.listChanged.next(this.listStore.slice());
   }
 
 }
