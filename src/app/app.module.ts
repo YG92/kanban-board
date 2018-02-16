@@ -19,8 +19,17 @@ import {ListFormComponent} from './list/list-form/list-form.component';
 import {FormComponent} from './form/form.component';
 import {DragDropDirectiveModule} from 'angular4-drag-drop';
 import {DragDropService} from './list/services/drag-drop.service';
-//
-// const firebaseConfig =
+import {AngularFireModule} from 'angularfire2';
+import {Http, HttpModule} from '@angular/http';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyDh8GJ2VfGDz8on6ppnTWV-oWiv2B1lcJc',
+  authDomain: 'kanban-board-51264.firebaseapp.com',
+  databaseURL: 'https://kanban-board-51264.firebaseio.com',
+  projectId: 'kanban-board-51264',
+  storageBucket: '',
+  messagingSenderId: '482929705086'
+};
 
 @NgModule({
   declarations: [
@@ -39,10 +48,17 @@ import {DragDropService} from './list/services/drag-drop.service';
     MatIconModule,
     ReactiveFormsModule,
     FormsModule,
-    DragDropDirectiveModule
+    DragDropDirectiveModule,
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [ListService, DragDropService],
+  providers: [
+    ListService,
+    DragDropService,
+    AngularFireModule
+  ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

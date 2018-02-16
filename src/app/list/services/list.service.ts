@@ -1,7 +1,12 @@
 import {ListModel} from '../list.model';
 import {Subject} from 'rxjs/Subject';
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 
+@Injectable()
 export class ListService {
+  constructor(private http: Http) {
+  }
 
   private listStore: ListModel[] = [
     new ListModel('title1', ['gdgd', 'dfsdfsa']),
