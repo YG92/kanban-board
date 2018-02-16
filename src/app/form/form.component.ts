@@ -1,4 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 
 @Component({
@@ -16,7 +22,8 @@ export class FormComponent implements OnInit {
   @Output() submitted = new EventEmitter<string>();
 
   onSubmit() {
-    this.submitted.emit(this.title.value);
+    const value = this.title.value;
+    this.submitted.emit(value);
     this.reset();
   }
 

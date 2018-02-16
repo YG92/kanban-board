@@ -9,6 +9,6 @@
             >
     {{card}}
   </mat-card>
-  <app-card-form
-    (click)="onAddCard()"></app-card-form>
+  <app-form placeholderText="Add new card..."
+            (submitted)="addCard($event)"></app-form>
 </mat-card>

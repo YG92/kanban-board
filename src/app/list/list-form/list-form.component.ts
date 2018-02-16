@@ -1,6 +1,12 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output
+} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {ListService} from '../services/list.service';
+import {ListModel} from '../list.model';
 
 @Component({
   selector: 'app-list-form',
@@ -13,7 +19,8 @@ export class ListFormComponent implements OnInit {
   }
 
   addList(title: string) {
-    this.listSrv.addNewList(title);
+    const newList = new ListModel(title, []);
+    this.listSrv.addNewList(newList);
   }
 
   ngOnInit() {

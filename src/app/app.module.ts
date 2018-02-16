@@ -9,18 +9,26 @@ import {
   MatInputModule,
   MatToolbarModule
 } from '@angular/material';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
 import {ListService} from './list/services/list.service';
-import {CardFormComponent} from './card/card-form/card-form.component';
 import {ListComponent} from './list/list.component';
 import {ListFormComponent} from './list/list-form/list-form.component';
-import {ClickOutsideDirective} from './click-outside.directive';
 import {FormComponent} from './form/form.component';
 import {DragDropDirectiveModule} from 'angular4-drag-drop';
 import {DragDropService} from './list/services/drag-drop.service';
+//
+// const firebaseConfig =
 
 @NgModule({
-  declarations: [AppComponent, CardFormComponent, ListComponent, ListFormComponent, ClickOutsideDirective, FormComponent],
+  declarations: [
+    AppComponent,
+    ListComponent,
+    ListFormComponent,
+    FormComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
