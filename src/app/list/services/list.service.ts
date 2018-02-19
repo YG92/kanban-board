@@ -1,23 +1,23 @@
 import {ListModel} from '../list.model';
 import {Subject} from 'rxjs/Subject';
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import {DataStorageService} from './data-storage.service';
 
 @Injectable()
 export class ListService {
-  constructor(private http: Http) {
+  constructor() {
   }
 
-  private listStore: ListModel[] = [
-    new ListModel('title1', ['gdgd', 'dfsdfsa']),
-    new ListModel('title2', ['gdgd', 'dfsdfsa']),
-    new ListModel('title3', ['gdgd', 'dfsdfsa']),
-    new ListModel('title4', ['gdgd', 'dfsdfsa'])
-  ];
+  private listStore: ListModel[] = [];
   listChanged = new Subject<ListModel[]>();
 
   getListStore() {
     return this.listStore.slice();
+  }
+
+  setListStore(lists: ListModel[]) {
+    this.listStore = lists;
+    this.listChanged.next(this.listStore.slice());
   }
 
   addNewList(newList) {

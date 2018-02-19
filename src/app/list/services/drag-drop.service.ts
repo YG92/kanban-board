@@ -2,14 +2,14 @@ import {Injectable, OnDestroy} from '@angular/core';
 import {ListService} from './list.service';
 import {ListModel} from '../list.model';
 import {Subscription} from 'rxjs/Subscription';
+import {DataStorageService} from './data-storage.service';
 
 @Injectable()
 export class DragDropService implements OnDestroy {
-
-  constructor(private listSrv: ListService) {
+  constructor(private listSrv: ListService, private dataSrv: DataStorageService) {
     this.listStore = this.listSrv.getListStore();
-    this.subscription = this.listSrv.listChanged
-      .subscribe(listStore => {
+    this.subscription = this.listSrv.listChanged.subscribe(
+      listStore => {
         this.listStore = listStore;
       });
   }
@@ -27,7 +27,8 @@ export class DragDropService implements OnDestroy {
 
   deleteCard() {
     this.draggedList.cards.splice(this.draggedCardId, 1);
-    this.listSrv.listChanged.next(this.listStore.slice());
+    this.listSrv.setListStore(this.listStore);
+    this.dataSrv.storeLists();
   }
 
   ngOnDestroy() {
