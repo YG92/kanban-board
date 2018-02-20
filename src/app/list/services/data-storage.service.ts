@@ -6,7 +6,8 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class DataStorageService {
-  constructor(private http: Http, private listSrv: ListService) {
+  constructor(private http: Http,
+              private listSrv: ListService) {
     this.getLists();
   }
 

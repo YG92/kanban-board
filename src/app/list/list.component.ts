@@ -6,6 +6,7 @@ import {
 import {ListModel} from './list.model';
 import {ListService} from './services/list.service';
 import {DragDropService} from './services/drag-drop.service';
+import {CreateService} from './services/create.service';
 
 @Component({
   selector: 'app-list',
@@ -15,7 +16,8 @@ import {DragDropService} from './services/drag-drop.service';
 export class ListComponent implements OnInit {
 
   constructor(private listSrv: ListService,
-              private dragDrop: DragDropService) {
+              private dragDrop: DragDropService,
+              private createSrv: CreateService) {
   }
 
   @Input() list: ListModel;
@@ -33,7 +35,7 @@ export class ListComponent implements OnInit {
   }
 
   addCard(title: string) {
-    this.listSrv.addNewCard(this.list, title);
+    this.createSrv.addNewCard(this.list, title);
   }
 
   ngOnInit() {

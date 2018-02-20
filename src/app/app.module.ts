@@ -22,6 +22,7 @@ import {DragDropService} from './list/services/drag-drop.service';
 import {AngularFireModule} from 'angularfire2';
 import {Http, HttpModule} from '@angular/http';
 import {DataStorageService} from './list/services/data-storage.service';
+import {CreateService} from './list/services/create.service';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDh8GJ2VfGDz8on6ppnTWV-oWiv2B1lcJc',
@@ -57,6 +58,7 @@ const firebaseConfig = {
     ListService,
     DragDropService,
     DataStorageService,
+    CreateService,
     AngularFireModule
   ],
   bootstrap: [AppComponent]

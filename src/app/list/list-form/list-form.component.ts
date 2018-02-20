@@ -7,6 +7,7 @@ import {
 import {FormControl, Validators} from '@angular/forms';
 import {ListService} from '../services/list.service';
 import {ListModel} from '../list.model';
+import {CreateService} from '../services/create.service';
 
 @Component({
   selector: 'app-list-form',
@@ -15,12 +16,13 @@ import {ListModel} from '../list.model';
 })
 export class ListFormComponent implements OnInit {
 
-  constructor(private listSrv: ListService) {
+  constructor(private listSrv: ListService,
+              private createSrv: CreateService) {
   }
 
   addList(title: string) {
     const newList = new ListModel(title, []);
-    this.listSrv.addNewList(newList);
+    this.createSrv.addNewList(newList);
   }
 
   ngOnInit() {
