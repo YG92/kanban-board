@@ -3,12 +3,6 @@
     <span>Kanban Board / Trello / Whatever</span>
   </mat-toolbar>
   <main class="col__center stretch">
-    <div class="list_wrapper">
-      <app-list *ngFor="let list of listStore; let listId = index"
-                [list]="list" [listId]="listId"></app-list>
-      <mat-card>
-        <app-list-form></app-list-form>
-      </mat-card>
-    </div>
+    <router-outlet></router-outlet>
   </main>
 </div>

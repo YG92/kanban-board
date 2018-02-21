@@ -1,9 +1,8 @@
-import {ListModel} from '../list.model';
-import {Subject} from 'rxjs/Subject';
+import { ListModel } from '../list.model';
+import { Subject } from 'rxjs/Subject';
 
 export class ListService {
-  constructor() {
-  }
+  constructor() {}
 
   listStore: ListModel[] = [];
   listChanged = new Subject<ListModel[]>();

@@ -1,13 +1,13 @@
-import {Injectable} from '@angular/core';
-import {ListService} from './list.service';
-import {DataStorageService} from './data-storage.service';
+import { Injectable } from '@angular/core';
+import { ListService } from './list.service';
+import { DataStorageService } from './data-storage.service';
 
 @Injectable()
 export class CreateService {
-
-  constructor(private listSrv: ListService,
-              private dataSrv: DataStorageService) {
-  }
+  constructor(
+    private listSrv: ListService,
+    private dataSrv: DataStorageService
+  ) {}
 
   addNewList(newList) {
     this.listSrv.listStore.push(newList);

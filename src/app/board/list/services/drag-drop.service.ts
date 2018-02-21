@@ -1,13 +1,14 @@
-import {Injectable} from '@angular/core';
-import {ListService} from './list.service';
-import {ListModel} from '../list.model';
-import {DataStorageService} from './data-storage.service';
+import { Injectable } from '@angular/core';
+import { ListService } from './list.service';
+import { ListModel } from '../list.model';
+import { DataStorageService } from './data-storage.service';
 
 @Injectable()
 export class DragDropService {
-  constructor(private listSrv: ListService,
-              private dataSrv: DataStorageService) {
-  }
+  constructor(
+    private listSrv: ListService,
+    private dataSrv: DataStorageService
+  ) {}
 
   draggedList: ListModel;
   draggedCardId: number;
@@ -21,5 +22,4 @@ export class DragDropService {
     this.draggedList.cards.splice(this.draggedCardId, 1);
     this.dataSrv.storeLists();
   }
-
 }

@@ -1,0 +1,7 @@
+<div class="list_wrapper">
+  <app-list *ngFor="let list of listStore; let listId = index"
+            [list]="list" [listId]="listId"></app-list>
+  <mat-card>
+    <app-list-form></app-list-form>
+  </mat-card>
+</div>

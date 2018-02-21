@@ -1,28 +1,31 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {AppComponent} from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
   MatButtonModule,
-  MatCardModule, MatIconModule,
+  MatCardModule,
+  MatIconModule,
   MatInputModule,
   MatToolbarModule
 } from '@angular/material';
-import {
-  FormsModule,
-  ReactiveFormsModule
-} from '@angular/forms';
-import {ListService} from './list/services/list.service';
-import {ListComponent} from './list/list.component';
-import {ListFormComponent} from './list/list-form/list-form.component';
-import {FormComponent} from './form/form.component';
-import {DragDropDirectiveModule} from 'angular4-drag-drop';
-import {DragDropService} from './list/services/drag-drop.service';
-import {AngularFireModule} from 'angularfire2';
-import {Http, HttpModule} from '@angular/http';
-import {DataStorageService} from './list/services/data-storage.service';
-import {CreateService} from './list/services/create.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListService } from './board/list/services/list.service';
+import { ListComponent } from './board/list/list.component';
+import { ListFormComponent } from './board/list/list-form/list-form.component';
+import { FormComponent } from './board/form/form.component';
+import { DragDropDirectiveModule } from 'angular4-drag-drop';
+import { DragDropService } from './board/list/services/drag-drop.service';
+import { AngularFireModule } from 'angularfire2';
+import { Http, HttpModule } from '@angular/http';
+import { DataStorageService } from './board/list/services/data-storage.service';
+import { CreateService } from './board/list/services/create.service';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BoardComponent } from './board/board.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDh8GJ2VfGDz8on6ppnTWV-oWiv2B1lcJc',
@@ -38,7 +41,11 @@ const firebaseConfig = {
     AppComponent,
     ListComponent,
     ListFormComponent,
-    FormComponent
+    FormComponent,
+    SignupComponent,
+    SigninComponent,
+    BoardComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,8 @@ const firebaseConfig = {
     FormsModule,
     DragDropDirectiveModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    AppRoutingModule
   ],
   providers: [
     ListService,
@@ -63,6 +71,4 @@ const firebaseConfig = {
   ],
   bootstrap: [AppComponent]
 })
-
-export class AppModule {
-}
+export class AppModule {}

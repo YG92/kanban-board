@@ -1,12 +1,8 @@
-import {
-  Component,
-  Input,
-  OnInit
-} from '@angular/core';
-import {ListModel} from './list.model';
-import {ListService} from './services/list.service';
-import {DragDropService} from './services/drag-drop.service';
-import {CreateService} from './services/create.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { ListModel } from './list.model';
+import { ListService } from './services/list.service';
+import { DragDropService } from './services/drag-drop.service';
+import { CreateService } from './services/create.service';
 
 @Component({
   selector: 'app-list',
@@ -14,11 +10,11 @@ import {CreateService} from './services/create.service';
   styleUrls: ['./list.component.sass']
 })
 export class ListComponent implements OnInit {
-
-  constructor(private listSrv: ListService,
-              private dragDrop: DragDropService,
-              private createSrv: CreateService) {
-  }
+  constructor(
+    private listSrv: ListService,
+    private dragDrop: DragDropService,
+    private createSrv: CreateService
+  ) {}
 
   @Input() list: ListModel;
   @Input() listId: number;
@@ -38,7 +34,5 @@ export class ListComponent implements OnInit {
     this.createSrv.addNewCard(this.list, title);
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
