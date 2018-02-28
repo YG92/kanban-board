@@ -1,0 +1,13 @@
+<form class="col" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <mat-form-field>
+    <input matInput placeholder="email"
+           name="email" ngModel email>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="password"
+           name="password" ngModel>
+  </mat-form-field>
+  <button type="submit" mat-raised-button
+          color="primary">Submit
+  </button>
+</form>

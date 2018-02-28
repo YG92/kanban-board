@@ -14,7 +14,6 @@ import { RouterModule } from '@angular/router';
 export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private listSrv: ListService,
-    private dataSrv: DataStorageService
   ) {}
 
   listStore: ListModel[];
