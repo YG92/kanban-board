@@ -2,8 +2,15 @@
   <mat-toolbar color="primary">
     <a routerLink="/">Kanban Board / Trello / Whatever</a>
     <mat-menu #appMenu="matMenu">
-      <a routerLink="login" *ngIf="userExists" mat-menu-item>Log In</a>
-      <a *ngIf="!userExists" mat-menu-item>Log Out</a>
+      <ng-template *ngIf="!userExists">
+        <a routerLink="login"  mat-menu-item>Log In</a>
+        <a routerLink="signup"  mat-menu-item>Sign Up</a>
+      </ng-template>
+      <button *ngIf="userExists" mat-menu-item (click)="logout()">Log Out</button>
+      <button mat-menu-item>do something else</button>
+      <button mat-menu-item>do something else</button>
+      <button mat-menu-item>do something else</button>
+
     </mat-menu>
     <button mat-icon-button
             [matMenuTriggerFor]="appMenu">

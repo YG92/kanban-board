@@ -2,12 +2,11 @@ import {
   Component, EventEmitter,
   OnInit, Output
 } from '@angular/core';
-import {NgForm} from '@angular/forms'
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-auth-form',
-  templateUrl: './auth-form.component.html',
-  styleUrls: ['./auth-form.component.sass']
+  templateUrl: './auth-form.component.html'
 })
 export class AuthFormComponent implements OnInit {
 

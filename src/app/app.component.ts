@@ -14,6 +14,10 @@ export class AppComponent implements OnInit {
 
   userExists: Boolean;
 
+  logout() {
+    this.authSrv.logOut();
+  }
+
   ngOnInit() {
     this.af.authState.subscribe(user => {
       if (user) {
