@@ -8,7 +8,7 @@ import {
   MatButtonModule,
   MatCardModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatMenuModule,
   MatToolbarModule
 } from '@angular/material';
 import {
@@ -63,6 +63,7 @@ export const firebaseConfig = {
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatMenuModule,
     ReactiveFormsModule,
     FormsModule,
     DragDropDirectiveModule,

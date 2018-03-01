@@ -6,7 +6,7 @@ import {BoardComponent} from './board/board.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  {path: 'signin', component: SigninComponent},
+  {path: 'login', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'board', component: BoardComponent},
   {path: '', redirectTo: 'board', pathMatch: 'full'},

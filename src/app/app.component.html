@@ -1,6 +1,14 @@
 <div class="page_wrapper stretch">
   <mat-toolbar color="primary">
-    <span>Kanban Board / Trello / Whatever</span>
+    <a routerLink="/">Kanban Board / Trello / Whatever</a>
+    <mat-menu #appMenu="matMenu">
+      <a routerLink="login" *ngIf="userExists" mat-menu-item>Log In</a>
+      <a *ngIf="!userExists" mat-menu-item>Log Out</a>
+    </mat-menu>
+    <button mat-icon-button
+            [matMenuTriggerFor]="appMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
   </mat-toolbar>
   <main class="col__center stretch">
     <router-outlet></router-outlet>

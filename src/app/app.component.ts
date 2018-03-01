@@ -12,8 +12,13 @@ export class AppComponent implements OnInit {
               private af: AngularFireAuth) {
   }
 
+  userExists: Boolean;
+
   ngOnInit() {
     this.af.authState.subscribe(user => {
+      if (user) {
+        this.userExists = true;
+      }
       this.authSrv.navigateUser(user);
     });
   }
