@@ -10,43 +10,45 @@ import 'rxjs/add/operator/map';
 export class DataStorageService {
   constructor(private http: Http,
               private listSrv: ListService,
-              private af: AngularFireAuth) {
+              private af: AngularFireAuth,
+              private authSrv: AuthService) {
     this.getLists();
   }
+
+  userId: string;
+  token: string;
 
   storeLists() {
     return this.http
       .put(
-        'https://kanban-board-51264.firebaseio.com/lists.json',
+        `https://kanban-board-51264.firebaseio.com/${this.userId}/lists.json?auth=${this.token}`,
         this.listSrv.getListStore()
       )
       .subscribe((response: Response) => {
         console.log(response);
       });
-
   }
 
   getLists() {
-    this.af.authState.subscribe(authState => {
-      if (authState) {
-        authState.getIdToken().then(token => {
-          this.http
-            .get(
-              'https://kanban-board-51264.firebaseio.com/lists.json?auth=' + token)
-            .map((response: Response) => {
-              const lists: ListModel[] = response.json();
-              lists.map(list => {
-                if (!list['cards']) {
-                  list['cards'] = [];
-                }
-              });
-              return lists;
-            })
-            .subscribe((lists: ListModel[]) => {
-              this.listSrv.setListStore(lists);
-            });
+    this.authSrv.getUserIdAndToken.subscribe(data => {
+      this.userId = data.userId;
+      this.token = data.token;
+      this.http
+        .get(
+          `https://kanban-board-51264.firebaseio.com/${this.userId}/lists.json?auth=${this.token}`)
+        // 'https://kanban-board-51264.firebaseio.com/lists.json')
+        .map((response: Response) => {
+          const lists: ListModel[] = response.json();
+          lists.map(list => {
+            if (!list['cards']) {
+              list['cards'] = [];
+            }
+          });
+          return lists;
+        })
+        .subscribe((lists: ListModel[]) => {
+          this.listSrv.setListStore(lists);
         });
-      }
     });
   }
 }

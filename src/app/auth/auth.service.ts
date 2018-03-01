@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {Router} from '@angular/router';
-import {Subscription} from 'rxjs/Subscription';
+import {Observable} from 'rxjs/Observable';
+import {Observer} from 'rxjs/Observer';
 
 @Injectable()
 export class AuthService {
@@ -10,13 +11,22 @@ export class AuthService {
               private af: AngularFireAuth) {
   }
 
-  token: string;
+  getUserIdAndToken = Observable.create((observer: Observer<object>) => {
+    this.af.authState.subscribe(user => {
+      if (user) {
+        const userId = user.uid;
+        user.getIdToken().then(token => {
+          observer.next({userId, token});
+        });
+      }
+    });
+  });
 
   signUp(email: string, password: string) {
     this.af.auth.createUserWithEmailAndPassword(email,
       password)
       .then(() =>
-        this.navigateAuthorizedUser()
+        this.navigateUser(true)
       ).catch((err) =>
       console.log(err));
   }
@@ -25,7 +35,7 @@ export class AuthService {
     this.af.auth.signInWithEmailAndPassword(email,
       password)
       .then(() =>
-        this.navigateAuthorizedUser()
+        this.navigateUser(true)
       )
       .catch((err) =>
         console.log(err));
@@ -37,19 +47,12 @@ export class AuthService {
         console.log(err));
   }
 
-  navigateAuthorizedUser() {
-    this.router.navigate(['/board']);
+  navigateUser(user) {
+    if (user) {
+      this.router.navigate(['/board']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
-
-  getToken() {
-    this.af.authState.subscribe(authState => {
-      if (authState) {
-        authState.getIdToken().then(token => {
-          this.token = token;
-        });
-      }
-    });
-    return this.token;
-  }
-
 }
+

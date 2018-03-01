@@ -12,7 +12,6 @@ import { Subscription } from 'rxjs/Subscription';
 export class BoardComponent implements OnInit, OnDestroy {
   constructor(
     private listSrv: ListService,
-    private dataSrv: DataStorageService
   ) {}
 
   listStore: ListModel[];

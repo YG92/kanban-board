@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ListModel } from './list.model';
 import { ListService } from './services/list.service';
 import { DragDropService } from './services/drag-drop.service';
-import { CreateService } from './services/create.service';
+import { CreateService } from './services/create';
 
 @Component({
   selector: 'app-list',

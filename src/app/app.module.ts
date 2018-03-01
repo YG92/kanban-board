@@ -26,7 +26,7 @@ import {AngularFireModule} from 'angularfire2';
 
 import {HttpModule} from '@angular/http';
 import {DataStorageService} from './board/list/services/data-storage.service';
-import {CreateService} from './board/list/services/create.service';
+import {CreateService} from './board/list/services/create';
 import {SignupComponent} from './auth/signup/signup.component';
 import {SigninComponent} from './auth/signin/signin.component';
 import {AppRoutingModule} from './app-routing.module';
