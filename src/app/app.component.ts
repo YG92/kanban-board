@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {AuthService} from './auth/auth.service';
 
@@ -8,11 +8,11 @@ import {AuthService} from './auth/auth.service';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
-  constructor(private authSrv: AuthService,
-              private af: AngularFireAuth) {
+  constructor(private af: AngularFireAuth,
+              private authSrv: AuthService) {
   }
 
-  userExists: Boolean;
+  isAuthenticated: boolean;
 
   logout() {
     this.authSrv.logOut();
@@ -21,10 +21,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.af.authState.subscribe(user => {
       if (user) {
-        this.userExists = true;
+        this.isAuthenticated = true;
       }
-      this.authSrv.navigateUser(user);
     });
   }
-
 }

@@ -17,12 +17,11 @@ export class DataStorageService {
 
   userId: string;
   token: string;
+  url: string;
 
   storeLists() {
-    return this.http
-      .put(
-        `https://kanban-board-51264.firebaseio.com/${this.userId}/lists.json?auth=${this.token}`,
-        this.listSrv.getListStore()
+    this.http
+      .put(this.url, this.listSrv.getListStore()
       )
       .subscribe((response: Response) => {
         console.log(response);
@@ -30,25 +29,29 @@ export class DataStorageService {
   }
 
   getLists() {
-    this.authSrv.getUserIdAndToken.subscribe(data => {
-      this.userId = data.userId;
-      this.token = data.token;
-      this.http
-        .get(
-          `https://kanban-board-51264.firebaseio.com/${this.userId}/lists.json?auth=${this.token}`)
-        // 'https://kanban-board-51264.firebaseio.com/lists.json')
-        .map((response: Response) => {
-          const lists: ListModel[] = response.json();
-          lists.map(list => {
-            if (!list['cards']) {
-              list['cards'] = [];
-            }
-          });
-          return lists;
-        })
-        .subscribe((lists: ListModel[]) => {
-          this.listSrv.setListStore(lists);
+    this.af.authState.subscribe(user => {
+      if (user) {
+        this.userId = user.uid;
+        user.getIdToken().then(token => {
+          this.token = token;
+          this.url =
+            `https://kanban-board-51264.firebaseio.com/${this.userId}/lists.json?auth=${this.token}`;
+          this.http
+            .get(this.url)
+            .map((response: Response) => {
+              const lists: ListModel[] = response.json();
+              lists.map(list => {
+                if (!list['cards']) {
+                  list['cards'] = [];
+                }
+              });
+              return lists;
+            })
+            .subscribe((lists: ListModel[]) => {
+              this.listSrv.setListStore(lists);
+            });
         });
+      }
     });
   }
 }

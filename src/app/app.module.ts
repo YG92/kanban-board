@@ -15,6 +15,7 @@ import {
   FormsModule,
   ReactiveFormsModule
 } from '@angular/forms';
+import {AuthGuardService} from './auth/auth-guard.service';
 import {AuthService} from './auth/auth.service';
 import {ListService} from './board/list/services/list.service';
 import {ListComponent} from './board/list/list.component';
@@ -78,7 +79,8 @@ export const firebaseConfig = {
     CreateService,
     AuthService,
     AngularFireModule,
-    AngularFireAuth
+    AngularFireAuth,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

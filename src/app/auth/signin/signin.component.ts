@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.sass']
+  templateUrl: './signin.component.html'
 })
 export class SigninComponent implements OnInit {
-  constructor(private authSrv: AuthService) {}
+  constructor(private authSrv: AuthService) {
+  }
 
   signIn(ev) {
     const email = ev.form.value.email;
@@ -15,6 +15,6 @@ export class SigninComponent implements OnInit {
     this.authSrv.signIn(email, password);
   }
 
-
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }

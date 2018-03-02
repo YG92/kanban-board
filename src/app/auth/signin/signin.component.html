@@ -1,4 +1,8 @@
-<div class="form_wrapper"><app-auth-form (submitted)="signIn($event)">
-  <span>Sign in</span>
-</app-auth-form>
+<div class="form_wrapper">
+  <app-auth-form (submitted)="signIn($event)">
+    <span class="title">Log in</span>
+  </app-auth-form>
 </div>
+<span>Don't have an account?
+    <a routerLink="/signup"> Sign Up</a>
+</span>
