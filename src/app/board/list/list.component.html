@@ -1,14 +1,20 @@
 <mat-card class="big_card" dropDirective
           (dropEvent)="addDropItem()">
-  <mat-card-title>{{list.title | uppercase}}
-  </mat-card-title>
-  <mat-card class="little_card"
-            *ngFor="let card of list.cards; let cardId = index"
-            [dragDirective]="card"
-            (startDrag)="startDrag(card, cardId)"
-            >
-    {{card}}
-  </mat-card>
+  <div class="wrapper" (appEditMode)="switchMode($event)">
+    <mat-card-title>{{list.title | uppercase}}
+    </mat-card-title>
+    <div class="edit_wrapper" *ngIf="editModeEnabled">
+      <mat-icon >create</mat-icon>
+      <mat-icon (click)="deleteList()">close</mat-icon>
+    </div>
+  </div>
+  <app-card
+    *ngFor="let card of list.cards; let cardId = index"
+    [card]="card"
+    [cardId]="cardId"
+    [listId]="listId"
+  >
+  </app-card>
   <app-form placeholderText="Add new card..."
             (submitted)="addCard($event)"></app-form>
 </mat-card>

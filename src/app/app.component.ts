@@ -22,6 +22,8 @@ export class AppComponent implements OnInit {
     this.af.authState.subscribe(user => {
       if (user) {
         this.isAuthenticated = true;
+      } else {
+        this.isAuthenticated = false;
       }
     });
   }

@@ -1,38 +1,43 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ListModel } from './list.model';
-import { ListService } from './services/list.service';
-import { DragDropService } from './services/drag-drop.service';
-import { CreateService } from './services/create';
+import {Component, Input, OnInit} from '@angular/core';
+import {EditModeDirective} from '../../edit-mode.directive';
+import {ListModel} from './list.model';
+import {ListService} from './services/list.service';
+import {DragDropService} from './services/drag-drop.service';
+import {EditService} from './services/edit.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.sass']
+  styleUrls: ['./list.component.sass'],
+  providers: [EditModeDirective]
 })
 export class ListComponent implements OnInit {
-  constructor(
-    private listSrv: ListService,
-    private dragDrop: DragDropService,
-    private createSrv: CreateService
-  ) {}
+  constructor(private listSrv: ListService,
+              private dragDrop: DragDropService,
+              private editSrv: EditService) {
+  }
 
   @Input() list: ListModel;
   @Input() listId: number;
-
-  startDrag(card, cardId) {
-    this.dragDrop.draggedItem = card;
-    this.dragDrop.draggedList = this.list;
-    this.dragDrop.draggedCardId = cardId;
-  }
+  editModeEnabled = false;
 
   addDropItem() {
-    this.dragDrop.dropCard(this.list);
+    this.dragDrop.dropCard(this.listId);
     this.dragDrop.deleteCard();
   }
 
   addCard(title: string) {
-    this.createSrv.addNewCard(this.list, title);
+    this.editSrv.addNewCard(this.list, title);
   }
 
-  ngOnInit() {}
+  deleteList() {
+    this.editSrv.deleteList(this.listId);
+  }
+
+  switchMode(enabled) {
+    this.editModeEnabled = enabled;
+  }
+
+  ngOnInit() {
+  }
 }

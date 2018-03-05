@@ -14,7 +14,7 @@ export class BoardComponent implements OnInit, OnDestroy {
 
   listStore: ListModel[];
   subscription: Subscription;
-
+  
   ngOnInit() {
     this.listStore = this.listSrv.getListStore();
     this.subscription =

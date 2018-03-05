@@ -1,0 +1,11 @@
+<div class="wrapper" (appEditMode)="switchMode($event)">
+  <mat-card class="little_card"
+            [dragDirective]="card"
+            (startDrag)="startDrag(card, cardId)">
+    {{card}}
+    <div class="edit_wrapper" *ngIf="editModeEnabled">
+      <mat-icon>create</mat-icon>
+      <mat-icon (click)="deleteCard()">close</mat-icon>
+    </div>
+  </mat-card>
+</div>

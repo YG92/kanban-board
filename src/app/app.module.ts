@@ -27,13 +27,15 @@ import {AngularFireModule} from 'angularfire2';
 
 import {HttpModule} from '@angular/http';
 import {DataStorageService} from './board/list/services/data-storage.service';
-import {CreateService} from './board/list/services/create';
+import {EditService} from './board/list/services/edit.service';
 import {SignupComponent} from './auth/signup/signup.component';
 import {SigninComponent} from './auth/signin/signin.component';
 import {AppRoutingModule} from './app-routing.module';
 import {BoardComponent} from './board/board.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthFormComponent} from './auth/auth-form/auth-form.component';
+import { EditModeDirective } from './edit-mode.directive';
+import { CardComponent } from './board/list/card/card.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyDh8GJ2VfGDz8on6ppnTWV-oWiv2B1lcJc',
@@ -54,7 +56,9 @@ export const firebaseConfig = {
     SigninComponent,
     BoardComponent,
     PageNotFoundComponent,
-    AuthFormComponent
+    AuthFormComponent,
+    EditModeDirective,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,7 @@ export const firebaseConfig = {
     ListService,
     DragDropService,
     DataStorageService,
-    CreateService,
+    EditService,
     AuthService,
     AngularFireModule,
     AngularFireAuth,
