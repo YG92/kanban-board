@@ -6,7 +6,8 @@ import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-auth-form',
-  templateUrl: './auth-form.component.html'
+  templateUrl: './auth-form.component.html',
+  styles: ['form {width: 235px}']
 })
 export class AuthFormComponent implements OnInit {
 

@@ -2,11 +2,25 @@
 <form class="col" (ngSubmit)="onSubmit(f)" #f="ngForm">
   <mat-form-field>
     <input matInput placeholder="email"
-           name="email" ngModel email>
+           name="email"
+           #email="ngModel"
+           ngModel
+           email
+           required>
+    <mat-error *ngIf="email.invalid && email.touched">
+      Please enter a valid email address
+    </mat-error>
   </mat-form-field>
   <mat-form-field>
     <input matInput placeholder="password"
-           name="password" ngModel>
+           name="password"
+           #psw="ngModel"
+           ngModel
+           minlength="6"
+           required>
+    <mat-error *ngIf="psw.invalid && email.touched">
+      Password should be at least 6 chars long
+    </mat-error>
   </mat-form-field>
   <button type="submit" mat-raised-button
           color="primary">Submit
