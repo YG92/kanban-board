@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {AngularFireAuth} from 'angularfire2/auth';
-import {AuthService} from '../../../auth/auth.service';
 import {ListService} from './list.service';
 import {ListModel} from '../list.model';
 import 'rxjs/add/operator/map';
@@ -10,8 +9,7 @@ import 'rxjs/add/operator/map';
 export class DataStorageService {
   constructor(private http: Http,
               private listSrv: ListService,
-              private af: AngularFireAuth,
-              private authSrv: AuthService) {
+              private af: AngularFireAuth) {
     this.getLists();
   }
 
@@ -20,11 +18,12 @@ export class DataStorageService {
   url: string;
 
   storeLists() {
+    const body = this.listSrv.getListStore();
     this.http
-      .put(this.url, this.listSrv.getListStore()
+      .put(this.url, body
       )
       .subscribe((response: Response) => {
-        console.log(response);
+        return response.json();
       });
   }
 

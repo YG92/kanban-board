@@ -34,7 +34,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {BoardComponent} from './board/board.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthFormComponent} from './auth/auth-form/auth-form.component';
-import { EditModeDirective } from './edit-mode.directive';
+import { ToggleIconsDirective } from './toggle-icons.directive';
 import { CardComponent } from './board/list/card/card.component';
 
 export const firebaseConfig = {
@@ -57,7 +57,7 @@ export const firebaseConfig = {
     BoardComponent,
     PageNotFoundComponent,
     AuthFormComponent,
-    EditModeDirective,
+    ToggleIconsDirective,
     CardComponent
   ],
   imports: [

@@ -1,5 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -7,10 +13,12 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./form.component.sass']
 })
 export class FormComponent implements OnInit {
-  constructor() {}
+  constructor() {
+  }
 
   title = new FormControl('', Validators.pattern(/\w/));
   @Input() placeholderText: string;
+  @Input() prepopulatedVal: string;
   @Output() submitted = new EventEmitter<string>();
 
   onSubmit() {
@@ -23,5 +31,7 @@ export class FormComponent implements OnInit {
     this.title.reset();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.title.setValue(this.prepopulatedVal);
+  }
 }

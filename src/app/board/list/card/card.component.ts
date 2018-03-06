@@ -2,7 +2,7 @@ import {
   Component, Input, OnInit,
   Output
 } from '@angular/core';
-import {EditModeDirective} from '../../../edit-mode.directive';
+import {ToggleIconsDirective} from '../../../toggle-icons.directive';
 import {EditService} from '../services/edit.service';
 import {DragDropService} from '../services/drag-drop.service';
 import {ListService} from '../services/list.service';
@@ -11,7 +11,7 @@ import {ListService} from '../services/list.service';
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.sass'],
-  providers: [EditModeDirective]
+  providers: [ToggleIconsDirective]
 
 })
 export class CardComponent implements OnInit {
@@ -24,7 +24,8 @@ export class CardComponent implements OnInit {
   @Input() card: string;
   @Input() cardId: number;
   @Input() listId: number;
-  editModeEnabled = false;
+  iconsToggled = false;
+  editMode = false;
 
   startDrag(card, cardId) {
     this.dragDrop.draggedItem = card;
@@ -32,8 +33,17 @@ export class CardComponent implements OnInit {
     this.dragDrop.draggedCardId = cardId;
   }
 
-  switchMode(enabled) {
-    this.editModeEnabled = enabled;
+  toggleIcons(val) {
+    this.iconsToggled = val;
+  }
+
+  switchMode() {
+    this.editMode = !this.editMode;
+  }
+
+  editCard(card) {
+    this.editSrv.editCard(this.listId, this.cardId, card);
+    this.switchMode();
   }
 
   deleteCard() {

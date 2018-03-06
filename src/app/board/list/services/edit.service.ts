@@ -19,6 +19,12 @@ export class EditService {
     this.listChanged();
   }
 
+  editCard(listId, cardId, card) {
+    const list = this.listSrv.listStore[listId];
+    list.cards.splice(cardId, 1, card);
+    this.listChanged();
+  }
+
   deleteCard(listId, cardId) {
     const list = this.listSrv.listStore[listId];
     list.cards.splice(cardId, 1);
@@ -27,6 +33,11 @@ export class EditService {
 
   addNewList(newList) {
     this.listSrv.listStore.push(newList);
+    this.listChanged();
+  }
+
+  editList(listId, listTitle) {
+    this.listSrv.listStore[listId].title = listTitle;
     this.listChanged();
   }
 

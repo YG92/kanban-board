@@ -1,11 +1,16 @@
-<div class="wrapper" (appEditMode)="switchMode($event)">
+<div class="wrapper" (appToggleIcons)="toggleIcons($event)">
   <mat-card class="little_card"
+            *ngIf="!editMode; else edit"
             [dragDirective]="card"
             (startDrag)="startDrag(card, cardId)">
     {{card}}
-    <div class="edit_wrapper" *ngIf="editModeEnabled">
-      <mat-icon>create</mat-icon>
+    <div class="edit_wrapper" *ngIf="iconsToggled">
+      <mat-icon (click)="switchMode()">create</mat-icon>
       <mat-icon (click)="deleteCard()">close</mat-icon>
     </div>
   </mat-card>
+  <ng-template #edit>
+    <app-form [prepopulatedVal]="card"
+              (submitted)="editCard($event)"></app-form>
+  </ng-template>
 </div>

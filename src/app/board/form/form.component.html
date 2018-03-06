@@ -1,8 +1,10 @@
 <div>
   <form (ngSubmit)="onSubmit()" class="col">
     <mat-form-field>
-      <input matInput [formControl]="title" placeholder={{placeholderText}}/>
-      <button type="button" mat-button *ngIf="title.value" matSuffix
+      <input matInput [formControl]="title"
+             placeholder={{placeholderText}}/>
+      <button type="button" mat-button *ngIf="title.value"
+              matSuffix
               mat-icon-button
               aria-label="Clear" (click)="reset()">
         <mat-icon>close</mat-icon>
@@ -10,7 +12,8 @@
     </mat-form-field>
     <div>
       <button *ngIf="title.value && title.valid"
-              mat-raised-button color="primary" type="submit">submit
+              mat-raised-button color="primary"
+              type="submit">submit
       </button>
     </div>
   </form>
