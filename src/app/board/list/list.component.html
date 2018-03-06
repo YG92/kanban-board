@@ -1,18 +1,23 @@
 <mat-card class="big_card" dropDirective
           (dropEvent)="addDropItem()">
-  <div class="wrapper" *ngIf="!editMode; else edit"
-       (appToggleIcons)="toggleIcons($event)">
-    <mat-card-title>{{list.title | uppercase}}
-    </mat-card-title>
-    <div class="edit_wrapper" *ngIf="iconsToggled">
-      <mat-icon (click)="switchMode()">create</mat-icon>
-      <mat-icon (click)="deleteList()">close</mat-icon>
+  <div (appClickOutside)="editMode = false">
+    <div class="wrapper"
+         (appToggleIcons)="toggleIcons($event)">
+      <mat-card-title *ngIf="!editMode">
+        {{list.title | uppercase}}
+      </mat-card-title>
+      <div class="edit_wrapper" *ngIf="iconsToggled">
+        <mat-icon
+          (click)="editMode = true">create
+        </mat-icon>
+        <mat-icon (click)="deleteList()">close</mat-icon>
+      </div>
     </div>
-  </div>
-  <ng-template #edit>
     <app-form [prepopulatedVal]="list.title"
-              (submitted)="editList($event)"></app-form>
-  </ng-template>
+              (submitted)="editList($event)"
+              *ngIf="editMode">
+    </app-form>
+  </div>
   <app-card
     *ngFor="let card of list.cards; let cardId = index"
     [card]="card"

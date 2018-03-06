@@ -2,6 +2,7 @@ import {
   Component, Input, OnInit,
   Output
 } from '@angular/core';
+import {ClickOutsideDirective} from '../../../click-outside.directive';
 import {ToggleIconsDirective} from '../../../toggle-icons.directive';
 import {EditService} from '../services/edit.service';
 import {DragDropService} from '../services/drag-drop.service';
@@ -11,7 +12,7 @@ import {ListService} from '../services/list.service';
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.sass'],
-  providers: [ToggleIconsDirective]
+  providers: [ToggleIconsDirective, ClickOutsideDirective]
 
 })
 export class CardComponent implements OnInit {

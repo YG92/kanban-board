@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ClickOutsideDirective} from '../../click-outside.directive';
 import {ToggleIconsDirective} from '../../toggle-icons.directive';
 import {ListModel} from './list.model';
 import {ListService} from './services/list.service';
@@ -9,7 +10,7 @@ import {EditService} from './services/edit.service';
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.sass'],
-  providers: [ToggleIconsDirective]
+  providers: [ToggleIconsDirective, ClickOutsideDirective]
 })
 export class ListComponent implements OnInit {
   constructor(private listSrv: ListService,
@@ -46,6 +47,10 @@ export class ListComponent implements OnInit {
 
   toggleIcons(val) {
     this.iconsToggled = val;
+  }
+
+  log() {
+    console.log('trst');
   }
 
   ngOnInit() {

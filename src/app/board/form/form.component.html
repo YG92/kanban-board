@@ -3,11 +3,11 @@
     <mat-form-field>
       <input matInput [formControl]="title"
              placeholder={{placeholderText}}/>
-      <button type="button" mat-button *ngIf="title.value"
+      <button type="button"
+              mat-button
+              *ngIf="title.value"
               matSuffix
-              mat-icon-button
-              aria-label="Clear" (click)="reset()">
-        <mat-icon>close</mat-icon>
+              mat-icon-button>
       </button>
     </mat-form-field>
     <div>

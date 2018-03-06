@@ -34,8 +34,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {BoardComponent} from './board/board.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthFormComponent} from './auth/auth-form/auth-form.component';
-import { ToggleIconsDirective } from './toggle-icons.directive';
-import { CardComponent } from './board/list/card/card.component';
+import {ToggleIconsDirective} from './toggle-icons.directive';
+import {CardComponent} from './board/list/card/card.component';
+import {ClickOutsideDirective} from './click-outside.directive';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyDh8GJ2VfGDz8on6ppnTWV-oWiv2B1lcJc',
@@ -58,7 +59,8 @@ export const firebaseConfig = {
     PageNotFoundComponent,
     AuthFormComponent,
     ToggleIconsDirective,
-    CardComponent
+    CardComponent,
+    ClickOutsideDirective
   ],
   imports: [
     BrowserModule,
@@ -84,7 +86,8 @@ export const firebaseConfig = {
     AuthService,
     AngularFireModule,
     AngularFireAuth,
-    AuthGuardService
+    AuthGuardService,
+    ClickOutsideDirective
   ],
   bootstrap: [AppComponent]
 })
