@@ -31,7 +31,6 @@ export class DataStorageService {
 
   userId: string;
   token: string;
-  url: string;
 
   checkDataExists(id) {
     const ref = this.db.database.ref(id);
@@ -39,19 +38,21 @@ export class DataStorageService {
   }
 
   storeLists() {
+    const url =
+      `https://kanban-board-51264.firebaseio.com/${this.userId}/lists.json?auth=${this.token}`;
     const body = this.listSrv.getListStore();
     this.http
-      .put(this.url, body)
+      .put(url, body)
       .subscribe((response: Response) => {
         return response.json();
       });
   }
 
   getLists() {
-    this.url =
+    const url =
       `https://kanban-board-51264.firebaseio.com/${this.userId}/lists.json?auth=${this.token}`;
     this.http
-      .get(this.url)
+      .get(url)
       .map((response: Response) => {
         const lists: ListModel[] = response.json();
         lists.map(list => {
