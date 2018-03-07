@@ -13,7 +13,7 @@
         <mat-icon (click)="deleteList()">close</mat-icon>
       </div>
     </div>
-    <app-form [prepopulatedVal]="list.title"
+    <app-form [prepopulatedVal]="list.title | uppercase"
               (submitted)="editList($event)"
               *ngIf="editMode">
     </app-form>

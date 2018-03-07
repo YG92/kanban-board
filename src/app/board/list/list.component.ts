@@ -49,10 +49,6 @@ export class ListComponent implements OnInit {
     this.iconsToggled = val;
   }
 
-  log() {
-    console.log('trst');
-  }
-
   ngOnInit() {
   }
 }

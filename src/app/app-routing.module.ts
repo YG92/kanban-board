@@ -4,7 +4,7 @@ import {SignupComponent} from './auth/signup/signup.component';
 import {SigninComponent} from './auth/signin/signin.component';
 import {NgModule} from '@angular/core';
 import {BoardComponent} from './board/board.component';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {PageNotFoundComponent} from './core/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
