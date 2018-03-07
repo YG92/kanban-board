@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {DragDropDirectiveModule} from 'angular4-drag-drop';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuth} from 'angularfire2/auth';
+import {AngularFireDatabase} from 'angularfire2/database';
 import {AuthGuardService} from '../../auth/auth-guard.service';
 import {AuthService} from '../../auth/auth.service';
 import {DataStorageService} from '../../board/list/services/data-storage.service';
@@ -26,6 +27,7 @@ import {PageNotFoundComponent} from './page-not-found.component';
     AuthService,
     AngularFireModule,
     AngularFireAuth,
+    AngularFireDatabase,
     AuthGuardService
   ]
 })
