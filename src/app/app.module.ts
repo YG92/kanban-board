@@ -14,7 +14,7 @@ import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AuthModule} from './auth/auth.module';
 import {BoardModule} from './board/board.module';
-import {CoreModule} from './core/page-not-found/core.module';
+import {CoreModule} from './core/core.module';
 import {MaterialModule} from './material/material.module';
 
 export const firebaseConfig = {
